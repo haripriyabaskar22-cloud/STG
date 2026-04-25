@@ -1,0 +1,124 @@
+/* STG GLOBAL - ELITE RED & BLACK THEME */
+
+.stg-molecule-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 2000px;
+}
+
+/* 360 Degree Rotating Connected Sphere with STG Labels */
+.molecule-sphere {
+  width: 800px;
+  height: 800px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate360 40s infinite linear;
+}
+
+@keyframes rotate360 {
+  from { transform: rotateY(0deg) rotateX(20deg); }
+  to { transform: rotateY(360deg) rotateX(20deg); }
+}
+
+.molecule-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: red;
+  border-radius: 50%;
+  box-shadow: 0 0 10px red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-label {
+  position: absolute;
+  font-size: 0.5rem;
+  color: rgba(255, 0, 0, 0.6);
+  font-weight: 900;
+  transform: translateZ(10px);
+  white-space: nowrap;
+}
+
+/* STG Coin Animation */
+.stg-coin-container {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+.stg-coin {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: coinSpin 4s infinite linear;
+}
+
+.stg-coin-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff0000, #8b0000);
+  border: 4px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  backface-visibility: hidden;
+  box-shadow: 0 0 40px rgba(255,0,0,0.5);
+}
+
+.stg-coin-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #333, #000);
+}
+
+@keyframes coinSpin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Background STG Evolution */
+.bg-stg-evolve {
+  position: absolute;
+  font-size: 35rem;
+  font-weight: 900;
+  color: rgba(255, 0, 0, 0.05);
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+  animation: bgEvolve 20s infinite alternate ease-in-out;
+}
+
+@keyframes bgEvolve {
+  0% { transform: scale(1) translate(-50%, -50%); opacity: 0.03; filter: blur(5px); }
+  100% { transform: scale(1.2) translate(-45%, -55%); opacity: 0.08; filter: blur(0px); }
+}
+
+/* Orbital Rings (as seen in image) */
+.orbital-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 0, 0, 0.1);
+  border-radius: 50%;
+  animation: orbitalRotate 15s infinite linear;
+}
+
+@keyframes orbitalRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
