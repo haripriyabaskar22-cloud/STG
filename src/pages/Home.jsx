@@ -28,27 +28,13 @@ const Home = () => {
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: isMobile ? 'flex-start' : 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        paddingTop: isMobile ? '130px' : '0', // Ensure it clears the header safely
+        paddingTop: isMobile ? '80px' : '0', // Safe boundary from header
         overflow: 'hidden',
         boxSizing: 'border-box',
         background: 'linear-gradient(135deg, #400000 0%, #000000 100%)',
       }}>
-
-        {/* Globe — centered background */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 1,
-          opacity: isMobile ? 0.8 : 1,
-          pointerEvents: 'none',
-          filter: 'drop-shadow(0 0 120px rgba(255,0,0,0.5))',
-        }}>
-          <STGGlobe size={globeSize} />
-        </div>
 
         {/* Overlay removed, background applied to section */}
         <div style={{
@@ -56,15 +42,30 @@ const Home = () => {
           zIndex: 2,
         }} />
 
-        {/* Centered text on top */}
+        {/* Centered text block with safe auto-margin centering */}
         <div style={{
           position: 'relative',
           zIndex: 3,
           textAlign: 'center',
-          padding: isMobile ? '20px 15px 40px' : '120px 24px 80px',
+          margin: 'auto 0', // Safely centers without top-clipping on tiny screens
+          padding: isMobile ? '40px 15px' : '120px 24px 80px',
           maxWidth: '820px',
           width: '100%',
         }}>
+
+          {/* STG Globe perfectly pinned BEHIND the text block */}
+          <div style={{
+            position: 'absolute',
+            top: '40%', // Align behind the main text titles
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: -1,
+            opacity: isMobile ? 0.9 : 1,
+            pointerEvents: 'none',
+            filter: 'drop-shadow(0 0 120px rgba(255,0,0,0.5))',
+          }}>
+            <STGGlobe size={globeSize} />
+          </div>
           <style>{`
             @keyframes stgEvolve {
               0%   { text-shadow: 0 0 20px rgba(255,0,0,0.2), 0 0 5px rgba(0,0,0,0.9); transform: scale(1); }
