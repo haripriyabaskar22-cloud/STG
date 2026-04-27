@@ -107,20 +107,21 @@ const Navbar = () => {
         style={{
           position: 'fixed',
           top: 0,
-          right: isOpen ? 0 : '-100%',
-          width: '75%',
-          maxWidth: '320px',
+          left: isOpen ? 0 : '100%',
+          width: '100vw',
           height: '100vh',
-          background: '#0a0a0a',
+          background: 'rgba(5, 0, 0, 0.95)',
+          backdropFilter: 'blur(10px)',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'center',
-          gap: '30px',
-          transition: 'right 0.4s ease',
-          zIndex: 10000,
-          boxShadow: isOpen ? '-10px 0 50px rgba(0,0,0,0.8)' : 'none',
-          borderLeft: isOpen ? '1px solid #1a1a1a' : 'none',
+          paddingTop: '130px',
+          paddingBottom: '40px',
+          overflowY: 'auto',
+          gap: '20px',
+          transition: 'left 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
+          zIndex: 9998, /* Sit just behind the navbar so Logo stays visible */
         }}
       >
         {navLinks.map((link) => (
@@ -128,12 +129,13 @@ const Navbar = () => {
             key={link.path}
             onClick={() => handleNav(link.path)}
             style={{
-              fontSize: '1.3rem',
+              fontSize: '1.4rem',
               color: location.pathname === link.path ? 'red' : '#fff',
               cursor: 'pointer',
               fontWeight: 700,
-              letterSpacing: '2px',
-              transition: 'color 0.3s',
+              letterSpacing: '4px',
+              transition: 'all 0.3s',
+              textTransform: 'uppercase',
             }}
           >
             {link.name}

@@ -27,10 +27,13 @@ const Home = () => {
         minHeight: '100vh',
         position: 'relative',
         display: 'flex',
+        flexDirection: 'column',
+        justifyContent: isMobile ? 'flex-start' : 'center',
         alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: isMobile ? '130px' : '0', // Ensure it clears the header safely
         overflow: 'hidden',
         boxSizing: 'border-box',
+        background: 'linear-gradient(135deg, #400000 0%, #000000 100%)',
       }}>
 
         {/* Globe — centered background */}
@@ -40,17 +43,16 @@ const Home = () => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           zIndex: 1,
-          opacity: isMobile ? 0.3 : 0.55,
+          opacity: isMobile ? 0.8 : 1,
           pointerEvents: 'none',
           filter: 'drop-shadow(0 0 120px rgba(255,0,0,0.5))',
         }}>
           <STGGlobe size={globeSize} />
         </div>
 
-        {/* Overlay */}
+        {/* Overlay removed, background applied to section */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 100%)',
           zIndex: 2,
         }} />
 
@@ -59,7 +61,7 @@ const Home = () => {
           position: 'relative',
           zIndex: 3,
           textAlign: 'center',
-          padding: isMobile ? '140px 20px 80px' : '120px 24px 80px',
+          padding: isMobile ? '20px 15px 40px' : '120px 24px 80px',
           maxWidth: '820px',
           width: '100%',
         }}>
@@ -117,8 +119,8 @@ const Home = () => {
       </section>
 
       {/* ══ STATS ══ */}
-      <section style={{ padding: isMobile ? '50px 5%' : '90px 5%', background: 'rgba(0,0,0,0.88)', borderTop: '1px solid #1a1a1a' }}>
-        <div className="container">
+      <section style={{ position: 'relative', overflow: 'hidden', padding: isMobile ? '50px 5%' : '90px 5%', background: 'rgba(0,0,0,0.88)', borderTop: '1px solid #1a1a1a' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(140px, 1fr))', gap: isMobile ? '25px 15px' : '36px', textAlign: 'center' }}>
             {[
               { val: '60+', label: 'GLOBAL PROJECTS' },
@@ -136,8 +138,12 @@ const Home = () => {
       </section>
 
       {/* ══ SERVICES ══ */}
-      <section style={{ padding: isMobile ? '50px 5%' : '90px 5%', background: 'rgba(5,0,0,0.92)', borderTop: '1px solid #1a1a1a' }}>
-        <div className="container">
+      <section style={{ position: 'relative', overflow: 'hidden', padding: isMobile ? '50px 5%' : '90px 5%', background: 'rgba(5,0,0,0.92)', borderTop: '1px solid #1a1a1a' }}>
+        <div className="stg-wave-bg" style={{ opacity: 0.8, zIndex: 0 }}>
+          <div className="wave-ring"></div>
+          <div className="wave-ring delay-1" style={{ animationDelay: '3s' }}></div>
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h2 style={{ fontSize: isMobile ? '1.4rem' : 'clamp(1.6rem,4vw,2.8rem)', fontWeight: 900, color: '#fff', marginBottom: isMobile ? '30px' : '50px', textAlign: 'center' }}>Core Services</h2>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(230px, 1fr))', gap: '20px' }}>
             {[
@@ -159,11 +165,15 @@ const Home = () => {
 
       {/* ══ ELITE SOLUTIONS — text above coin on mobile ══ */}
       <section style={{
+        position: 'relative',
+        overflow: 'hidden',
         padding: isMobile ? '80px 5% 60px' : '100px 8%',
         background: 'rgba(0,0,0,0.97)',
         borderTop: '1px solid #1a1a1a',
       }}>
+        <div className="stg-neon-grid-bg" style={{ zIndex: 0, opacity: 0.9 }}></div>
         <div style={{
+          position: 'relative', zIndex: 1,
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'center',
@@ -214,8 +224,12 @@ const Home = () => {
       </section>
 
       {/* ══ CEO ══ */}
-      <section style={{ padding: isMobile ? '50px 5% 60px' : '90px 5% 110px', background: 'rgba(5,0,0,0.92)', borderTop: '1px solid #1a1a1a' }}>
-        <div className="container">
+      <section style={{ position: 'relative', overflow: 'hidden', padding: isMobile ? '50px 5% 60px' : '90px 5% 110px', background: 'rgba(5,0,0,0.92)', borderTop: '1px solid #1a1a1a' }}>
+        <div className="stg-aurora-bg" style={{ opacity: 0.9, zIndex: 0 }}>
+          <div className="aurora-wave"></div>
+          <div className="aurora-wave"></div>
+        </div>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h2 style={{ fontSize: isMobile ? '1.4rem' : 'clamp(1.6rem,4vw,2.8rem)', fontWeight: 900, color: '#fff', textAlign: 'center', marginBottom: isMobile ? '30px' : '50px' }}>Meet Our CEO</h2>
           <div style={{ maxWidth: '580px', margin: '0 auto' }}>
             <div style={{ background: '#0a0a0a', padding: isMobile ? '25px 18px' : '45px', borderRadius: '15px', border: '1px solid #1a1a1a', textAlign: 'center' }}>

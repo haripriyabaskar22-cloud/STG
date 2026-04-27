@@ -31,13 +31,12 @@ function App() {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
+  // Redirect to home page on any hard refresh or initial load
   useEffect(() => {
-    // Force redirect to home on refresh/initial load
-    if (location.pathname !== '/') {
+    if (window.location.pathname !== '/') {
       navigate('/', { replace: true });
     }
-  }, []); // Only run once on mount (refresh)
-
+  }, []);
   return (
     <div className="app-container" style={{ background: '#000', color: '#fff', minHeight: '100vh' }}>
       {/* Canvas-based Molecule Background — NOT on home page */}
@@ -45,7 +44,7 @@ function App() {
 
       <NavigationManager />
       <Navbar />
-      <main style={{ position: 'relative', zIndex: 1, minHeight: '100vh' }}>
+      <main style={{ position: 'relative', zIndex: 1, minHeight: '100vh', paddingTop: !isHome ? '100px' : '0' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
